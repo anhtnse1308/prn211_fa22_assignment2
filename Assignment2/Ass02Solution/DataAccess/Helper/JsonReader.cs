@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using DataAccess.Models;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Helper
 {
-    public class JsonReader
+    public static class JsonReader
     {
-        public string GetConnectionString()
+        public static string GetConnectionString()
         {
             string connectionString = null;
             IConfiguration config = new ConfigurationBuilder()
@@ -20,13 +21,13 @@ namespace DataAccess.Helper
             connectionString = config["ConnectionString:MyStockDB"];
             return connectionString;
         }
-        //public MemberObject ImportJson()
-        //{
-        //    var jsonData = new ConfigurationBuilder().AddJsonFile(@"appsettings.json");
-        //    IConfiguration config = jsonData.Build();
+        public static Member ImportJson()
+        {
+            var jsonData = new ConfigurationBuilder().AddJsonFile(@"appsettings.json");
+            IConfiguration config = jsonData.Build();
 
-        //    var jsonAdmin = config.GetSection("AdminAccount").Get<MemberObject>();
-        //    return (MemberObject)jsonAdmin;
-        //}
+            var jsonAdmin = config.GetSection("AdminAccount").Get<Member>();
+            return (Member)jsonAdmin;
+        }
     }
 }

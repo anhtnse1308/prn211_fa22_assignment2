@@ -41,7 +41,8 @@ CREATE TABLE [OrderDetail](
 	[ProductId] [int] REFERENCES Product([ProductId])NOT NULL,
 	[UnitPrice] [money] NOT NULL,
 	[Quantity] [int] NOT NULL,
-	[Discount] [float] NOT NULL
+	[Discount] [float] 
+	PRIMARY KEY([ProductId],[OrderId])
 ) 
 
 GO
