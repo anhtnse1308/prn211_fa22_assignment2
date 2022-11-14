@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccess.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,12 @@ namespace DataAccess.Repository
 {
     public class OrderRepository : IOrderRepository
     {
-        
+        public void Add(Order entity) => OrderDAO.Instance.Add(entity);
+
+        public IEnumerable<Order> Get() => OrderDAO.Instance.GetMembers();
+
+        public void Remove(Order entity) => OrderDAO.Instance.Remove(entity);
+
+        public void Update(Order entity) => OrderDAO.Instance.Update(entity);
     }
 }

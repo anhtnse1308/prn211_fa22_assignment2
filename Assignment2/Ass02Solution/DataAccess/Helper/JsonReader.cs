@@ -21,7 +21,7 @@ namespace DataAccess.Helper
             connectionString = config["ConnectionString:MyStockDB"];
             return connectionString;
         }
-        public static Member ImportJson()
+        public static Member GetAdmin()
         {
             var jsonData = new ConfigurationBuilder().AddJsonFile(@"appsettings.json");
             IConfiguration config = jsonData.Build();

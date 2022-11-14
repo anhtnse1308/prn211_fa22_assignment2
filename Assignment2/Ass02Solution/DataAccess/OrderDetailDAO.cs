@@ -8,16 +8,16 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    public class ProductDAO
+    public class OrderDetailDAO
     {
-        private static ProductDAO instance = null;
+        private static OrderDetailDAO instance = null;
         private static readonly object instanceLock = new object();
         private MyStoreContext _context;
-        private ProductDAO() 
+        private OrderDetailDAO() 
         { 
             _context = new MyStoreContext();
         }
-        public static ProductDAO Instance
+        public static OrderDetailDAO Instance
         {
             get
             {
@@ -25,44 +25,44 @@ namespace DataAccess
                 {
                     if (instance == null)
                     {
-                        instance = new ProductDAO();
+                        instance = new OrderDetailDAO();
                     }
                     return instance;
                 }
             }
         }
-        public IEnumerable<Product> GetMembers()
+        public IEnumerable<OrderDetail> GetMembers()
         {
-            return _context.Products.ToList();
+            return _context.OrderDetails.ToList();
         }
-        public void Add(Product entity)
+        public void Add(OrderDetail entity)
         {
             if (entity == null) throw new ArgumentNullException("Entity is null");
             else
             {
-                _context.Products.Add(entity);
+                _context.OrderDetails.Add(entity);
                 _context.SaveChanges();
             }
         }
-        public void Remove(Product entity)
+        public void Remove(OrderDetail entity)
         {
             if (entity == null) throw new ArgumentNullException("Entity is null");
             else
             {
-                var found = _context.Products.Where(m => m.ProductId == entity.ProductId).FirstOrDefault();
+                var found = _context.OrderDetails.Where(m => (m.ProductId == entity.ProductId) && (m.OrderId == entity.OrderId)).FirstOrDefault();
                 if (found != null)
                 {
-                    _context.Products.Remove(found);
+                    _context.OrderDetails.Remove(found);
                     _context.SaveChanges();
                 }
             }
         }
-        public void Update(Product entity)
+        public void Update(OrderDetail entity)
         {
             if (entity == null) throw new ArgumentNullException("Entity is null");
             else
             {
-                var found = _context.Products.Where(m => m.ProductId == entity.ProductId).FirstOrDefault();
+                var found = _context.OrderDetails.Where(m => (m.ProductId == entity.ProductId) && (m.OrderId == entity.OrderId)).FirstOrDefault();
                 if (found != null)
                 {
                     _context.Entry(found).CurrentValues.SetValues(entity);
