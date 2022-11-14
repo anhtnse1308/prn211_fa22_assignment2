@@ -1,5 +1,6 @@
-﻿using BussinessObject;
+﻿using DataAccess.Models;
 using DataAccess.Repository;
+using DataAccess.Helper;
 using System;
 using System.Windows.Forms;
 
@@ -7,27 +8,31 @@ namespace SalesWinApp
 {
     public partial class frmLogin : Form
     {
-        public static MemberObject loginUser;
+        IMemberRepository memberRepository;
+        public static Member loginUser;
         public frmLogin()
         {
             InitializeComponent();
+            memberRepository = new MemberRepository();
         }
-        IMemberRepository memberRepository = new MemberRepository();
-        public MemberObject login(string email, string password)
+        public Member login(string email, string password)
         {
-            var MemberList = memberRepository.GetMembers();
-            var admin = memberRepository.GetAdmin();
-            MemberObject member = null;
-            foreach(MemberObject o in MemberList)
-            {
-                if(email.Equals(o.Email) && password.Equals(o.Password))
-                {
-                    member = o;
-                }
-            }
-            if (admin!=null && email.Equals(admin.Email) && password.Equals(admin.Password))
+            var admin = JsonReader.GetAdmin();
+            Member member = null;
+            if (admin != null && email.Equals(admin.Email) && password.Equals(admin.Password))
             {
                 member = admin;
+            }
+            if (member == null)
+            {
+                var MemberList = memberRepository.Get();
+                foreach (Member o in MemberList)
+                {
+                    if (email.Equals(o.Email) && password.Equals(o.Password))
+                    {
+                        member = o;
+                    }
+                }
             }
             return member;
         }
@@ -45,11 +50,11 @@ namespace SalesWinApp
             IMemberRepository MemberRepository = new MemberRepository();
             string email = txtEmail.Text;
             string password = txtPassword.Text;
-            MemberObject loginMem = login(email, password);
-            if (loginMem!=null)
+            Member loginMem = login(email, password);
+            if (loginMem != null)
             {
                 loginUser = loginMem;
-                if (loginUser!=null)
+                if (loginUser != null)
                 {
                     frmMain frmMain = new frmMain
                     {

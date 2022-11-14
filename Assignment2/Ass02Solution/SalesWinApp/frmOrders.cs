@@ -1,4 +1,4 @@
-﻿using BussinessObject;
+﻿using DataAccess.Models;
 using DataAccess;
 using DataAccess.Repository;
 using System;
@@ -19,7 +19,7 @@ namespace SalesWinApp
         {
             InitializeComponent();
         }
-        public MemberObject loginUser { get; set; }
+        public Member loginUser { get; set; }
         IOrderRepository orderRepository = new OrderRepository();
         BindingSource source;
 
@@ -36,18 +36,18 @@ namespace SalesWinApp
         {
             frmOrderDetails frmOrderDetails = new frmOrderDetails
             {
-                loginUser=loginUser,
-                orderRepository=orderRepository
+                loginUser = loginUser,
+                orderRepository = orderRepository
             };
             if (frmOrderDetails.ShowDialog() == DialogResult.OK)
             {
-                var OrderList = orderRepository.GetOrders();
+                var OrderList = orderRepository.Get();
                 LoadOrderList(OrderList);
                 source.Position = source.Count - 1;
             }
         }
 
-        public void LoadOrderList(IEnumerable<OrderObject> OrderList)
+        public void LoadOrderList(IEnumerable<Order> OrderList)
         {
             try
             {
@@ -102,16 +102,16 @@ namespace SalesWinApp
             txtSearchMemberId.DataBindings.Clear();
         }
 
-        public OrderObject GetOrderObject()
+        public Order GetOrderObject()
         {
-            OrderObject order = null;
+            Order order = null;
             try
             {
-                order = new OrderObject
+                order = new Order
                 {
-                    OrderId=int.Parse(txtOrderId.Text),
-                    Member=MemberDAO.Instance.GetMemberByID(int.Parse(txtMemberId.Text)),
-                    OrderDate=DateTime.Parse(txtOrderDate.Text),
+                    OrderId = int.Parse(txtOrderId.Text),
+                    MemberId = int.Parse(txtMemberId.Text),
+                    OrderDate = DateTime.Parse(txtOrderDate.Text),
                     ShippedDate = DateTime.Parse(txtShippedDate.Text),
                     RequiredDate = DateTime.Parse(txtRequiredDate.Text),
                     Freight = decimal.Parse(txtFreight.Text)
@@ -126,7 +126,7 @@ namespace SalesWinApp
 
         private void btnLoad_Click(object sender, EventArgs e)
         {
-            var ListOrders = orderRepository.GetOrders();
+            var ListOrders = orderRepository.Get();
             LoadOrderList(ListOrders);
         }
 
@@ -134,12 +134,12 @@ namespace SalesWinApp
         {
             frmProducts frmProducts = new frmProducts
             {
-                Text="Add new Product to Order",
+                Text = "Add new Product to Order",
                 OrderInfo = GetOrderObject()
             };
             if (frmProducts.ShowDialog() == DialogResult.OK)
             {
-                var ListOrder = orderRepository.GetOrders();
+                var ListOrder = orderRepository.Get();
                 LoadOrderList(ListOrder);
                 source.Position = source.Count - 1;
             }
@@ -153,7 +153,7 @@ namespace SalesWinApp
                 if (order != null)
                 {
                     orderRepository.Remove(order);
-                    var OrderList = orderRepository.GetOrders();
+                    var OrderList = orderRepository.Get();
                     LoadOrderList(OrderList);
                 }
             }
@@ -164,11 +164,11 @@ namespace SalesWinApp
         }
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            var OrderList = orderRepository.GetOrders();
-            List<OrderObject> searchList = new List<OrderObject>();
+            var OrderList = orderRepository.Get();
+            List<Order> searchList = new List<Order>();
             if (!txtSearchOrderId.Text.Equals(string.Empty) && !txtSearchMemberId.Text.Equals(string.Empty))
             {
-                foreach (OrderObject o in OrderList)
+                foreach (Order o in OrderList)
                 {
                     if (o.Member.MemberId == int.Parse(txtSearchOrderId.Text) && o.OrderId.Equals(txtSearchMemberId.Text))
                     {

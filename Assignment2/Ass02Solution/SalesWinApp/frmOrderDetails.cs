@@ -1,4 +1,4 @@
-﻿using BussinessObject;
+﻿using DataAccess.Models;
 using DataAccess.Repository;
 using System;
 using System.Collections.Generic;
@@ -14,7 +14,7 @@ namespace SalesWinApp
 {
     public partial class frmOrderDetails : Form
     {
-        public MemberObject loginUser { get; set; }
+        public Member loginUser { get; set; }
         public IOrderDetailsRepository orderDetailsRepository = new OrderDetailsRepository();
         public IProductRepository productRepository = new ProductRepository();
         public IOrderRepository orderRepository { get; set; }
@@ -40,15 +40,15 @@ namespace SalesWinApp
             txtSearchOrderId.DataBindings.Clear();
             txtSearchProductId.DataBindings.Clear();
         }
-        public OrderDetailsObject GetOrderDetailsObject()
+        public OrderDetail GetOrderDetailsObject()
         {
-            OrderDetailsObject orderDetails = null;
+            OrderDetail orderDetails = null;
             try
             {
-                orderDetails = new OrderDetailsObject
+                orderDetails = new OrderDetail
                 {
-                    Order= int.Parse(txtOrderId.Text),
-                    Product = int.Parse(txtProductId.Text),
+                    OrderId= int.Parse(txtOrderId.Text),
+                    ProductId = int.Parse(txtProductId.Text),
                     UnitPrice =int.Parse(txtUnitPrice.Text),
                     Quantity = int.Parse(txtQuantity.Text),
                     Discount = float.Parse(txtDiscount.Text)
@@ -61,7 +61,7 @@ namespace SalesWinApp
             return orderDetails;
         }
 
-        public void LoadOrderDetailsList(IEnumerable<OrderDetailsObject> OrderList)
+        public void LoadOrderDetailsList(IEnumerable<OrderDetail> OrderList)
         {
             try
             {
@@ -92,14 +92,14 @@ namespace SalesWinApp
                 MessageBox.Show(ex.Message, "Load order details list");
             }
         }
-        public IEnumerable<OrderDetailsObject> GetList()
+        public IEnumerable<OrderDetail> GetList()
         {
-            List<OrderDetailsObject> ListOrderDetails = new List<OrderDetailsObject>();
-            var ListOrder = orderRepository.GetOrdersByMember(loginUser.MemberId);
-            foreach (OrderObject o in ListOrder)
+            List<OrderDetail> ListOrderDetails = new List<OrderDetail>();
+            var ListOrder = orderRepository.Get().Where(o => o.MemberId == loginUser.MemberId);
+            foreach (Order o in ListOrder)
             {
-                List<OrderDetailsObject> order = (List<OrderDetailsObject>)orderDetailsRepository.GetOrderDetails(o.OrderId);
-                foreach (OrderDetailsObject details in order)
+                List<OrderDetail> order = (List<OrderDetail>)orderDetailsRepository.Get().Where(d => d.OrderId == o.OrderId);
+                foreach (OrderDetail details in order)
                 {
                     ListOrderDetails.Add(details);
                 }
@@ -119,7 +119,10 @@ namespace SalesWinApp
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            orderDetailsRepository.Remove(int.Parse(txtOrderId.Text));
+            var orderdetail = orderDetailsRepository.Get()
+                .Where(detail => detail.OrderId == int.Parse(txtOrderId.Text) && detail.ProductId == int.Parse(txtProductId.Text))
+                .FirstOrDefault();
+            orderDetailsRepository.Remove(orderdetail);
             var ListOrderDetails = GetList();
             LoadOrderDetailsList(ListOrderDetails);
         }
@@ -127,12 +130,12 @@ namespace SalesWinApp
         private void btnSearch_Click(object sender, EventArgs e)
         {
             var ListOrderDetails = GetList();
-            List<OrderDetailsObject> searchList = new List<OrderDetailsObject>();
+            List<OrderDetail> searchList = new List<OrderDetail>();
             if (!txtSearchOrderId.Text.Equals(string.Empty) && !txtSearchProductId.Text.Equals(string.Empty))
             {
-                foreach (OrderDetailsObject o in ListOrderDetails)
+                foreach (OrderDetail o in ListOrderDetails)
                 {
-                    if (o.Order == int.Parse(txtSearchOrderId.Text) && o.Product.Equals(txtSearchProductId.Text))
+                    if (o.OrderId == int.Parse(txtSearchOrderId.Text) && o.Product.Equals(txtSearchProductId.Text))
                     {
                         searchList.Add(o);
                     }

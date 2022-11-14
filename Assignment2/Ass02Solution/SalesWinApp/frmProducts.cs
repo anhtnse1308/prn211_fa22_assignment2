@@ -1,4 +1,4 @@
-﻿using BussinessObject;
+﻿using DataAccess.Models;
 using DataAccess.Repository;
 using System;
 using System.Collections.Generic;
@@ -14,7 +14,7 @@ namespace SalesWinApp
 {
     public partial class frmProducts : Form
     {
-        public OrderObject OrderInfo { get; set; }
+        public Order OrderInfo { get; set; }
 
         public frmProducts()
         {
@@ -42,13 +42,13 @@ namespace SalesWinApp
             };
             if (frmProductDetails.ShowDialog() == DialogResult.OK)
             {
-                var ListMembers = productRepository.GetProducts();
+                var ListMembers = productRepository.Get();
                 LoadMemberList(ListMembers);
                 source.Position = source.Count - 1;
             }
         }
 
-        public void LoadMemberList(IEnumerable<ProductObject> ListMembers)
+        public void LoadMemberList(IEnumerable<Product> ListMembers)
         {
             try
             {
@@ -101,17 +101,17 @@ namespace SalesWinApp
             txtWeight.DataBindings.Clear();
         }
 
-        public ProductObject GetProductObject()
+        public Product GetProductObject()
         {
-            ProductObject product = null;
+            Product product = null;
             try
             {
-                product = new ProductObject
+                product = new Product
                 {
-                    CategoryId=int.Parse(txtCategoryId.Text),
-                    ProductName= txtProductName.Text,
-                    UnitPrice=int.Parse(txtUnitPrice.Text),
-                    ProductId=int.Parse(txtProductId.Text),
+                    CategoryId = int.Parse(txtCategoryId.Text),
+                    ProductName = txtProductName.Text,
+                    UnitPrice = int.Parse(txtUnitPrice.Text),
+                    ProductId = int.Parse(txtProductId.Text),
                     UnitInStock = int.Parse(txtUnitInStock.Text),
                     Weight = txtWeight.Text
                 };
@@ -125,7 +125,7 @@ namespace SalesWinApp
 
         private void btnLoad_Click(object sender, EventArgs e)
         {
-            var ListProduct = productRepository.GetProducts();
+            var ListProduct = productRepository.Get();
             LoadMemberList(ListProduct);
         }
 
@@ -139,7 +139,7 @@ namespace SalesWinApp
             };
             if (frmProductDetails.ShowDialog() == DialogResult.OK)
             {
-                var ListProduct = productRepository.GetProducts();
+                var ListProduct = productRepository.Get();
                 LoadMemberList(ListProduct);
                 source.Position = source.Count - 1;
             }
@@ -153,7 +153,7 @@ namespace SalesWinApp
                 if (product != null)
                 {
                     productRepository.Remove(product);
-                    var ListProduct = productRepository.GetProducts();
+                    var ListProduct = productRepository.Get();
                     LoadMemberList(ListProduct);
                 }
             }

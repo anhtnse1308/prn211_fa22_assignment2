@@ -1,4 +1,4 @@
-﻿using BussinessObject;
+﻿using DataAccess.Models;
 using DataAccess.Repository;
 using System;
 using System.Collections.Generic;
@@ -36,13 +36,13 @@ namespace SalesWinApp
             };
             if (frmMemberDetails.ShowDialog() == DialogResult.OK)
             {
-                var ListMembers = memberRepository.GetMembers();
+                var ListMembers = memberRepository.Get();
                 LoadMemberList(ListMembers);
                 source.Position = source.Count - 1;
             }
         }
 
-        public void LoadMemberList(IEnumerable<MemberObject> ListMembers)
+        public void LoadMemberList(IEnumerable<Member> ListMembers)
         {
             try
             {
@@ -97,12 +97,12 @@ namespace SalesWinApp
             txtCountry.DataBindings.Clear();
         }
 
-        public MemberObject GetMemberObject()
+        public Member GetMemberObject()
         {
-            MemberObject member = null;
+            Member member = null;
             try
             {
-                member = new MemberObject
+                member = new Member
                 {
                     MemberId = int.Parse(txtID.Text),
                     Email = txtEmail.Text,
@@ -121,7 +121,7 @@ namespace SalesWinApp
 
         private void btnLoad_Click(object sender, EventArgs e)
         {
-            var ListMembers = memberRepository.GetMembers();
+            var ListMembers = memberRepository.Get();
             LoadMemberList(ListMembers);
         }
 
@@ -135,7 +135,7 @@ namespace SalesWinApp
             };
             if (frmMemberDetails.ShowDialog() == DialogResult.OK)
             {
-                var ListMembers = memberRepository.GetMembers();
+                var ListMembers = memberRepository.Get();
                 LoadMemberList(ListMembers);
                 source.Position = source.Count - 1;
             }
@@ -149,7 +149,7 @@ namespace SalesWinApp
                 if (member != null)
                 {
                     memberRepository.Remove(member);
-                    var ListMembers = memberRepository.GetMembers();
+                    var ListMembers = memberRepository.Get();
                     LoadMemberList(ListMembers);
                 }
             }
@@ -160,11 +160,11 @@ namespace SalesWinApp
         }
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            var ListMembers = memberRepository.GetMembers();
-            List<MemberObject> searchList = new List<MemberObject>();
+            var ListMembers = memberRepository.Get();
+            List<Member> searchList = new List<Member>();
             if (!txtSearchID.Text.Equals(string.Empty) && !txtSearchEmail.Text.Equals(string.Empty))
             {
-                foreach (MemberObject o in ListMembers)
+                foreach (Member o in ListMembers)
                 {
                     if (o.MemberId == int.Parse(txtSearchID.Text) && o.Email.Equals(txtSearchEmail.Text))
                     {
@@ -185,11 +185,11 @@ namespace SalesWinApp
 
         private void txtSearchName_TextChanged(object sender, EventArgs e)
         {
-            var ListMembers = memberRepository.GetMembers();
-            List<MemberObject> searchList = new List<MemberObject>();
+            var ListMembers = memberRepository.Get();
+            List<Member> searchList = new List<Member>();
             if (!txtSearchEmail.Text.Equals(string.Empty))
             {
-                foreach (MemberObject o in ListMembers)
+                foreach (Member o in ListMembers)
                 {
                     if (o.Email.Contains(txtSearchEmail.Text))
                     {

@@ -1,4 +1,4 @@
-﻿using BussinessObject;
+﻿using DataAccess.Models;
 using DataAccess.Repository;
 using System;
 using System.Collections.Generic;
@@ -20,7 +20,7 @@ namespace SalesWinApp
         }
         public IProductRepository ProductRepository { get; set; }
         public string Section { get; set; }
-        public ProductObject ProductInfo { get; set; }
+        public Product ProductInfo { get; set; }
         private void frmMemberDetails_Load(object sender, EventArgs e)
         {
             if (Section.Contains("Update"))
@@ -37,7 +37,7 @@ namespace SalesWinApp
         {
             try
             {
-                var product = new ProductObject
+                var product = new Product
                 {
                     CategoryId= int.Parse(txtCategoryId.Text),
                     ProductName= txtProductName.Text,
@@ -52,7 +52,7 @@ namespace SalesWinApp
                 }
                 else
                 {
-                    ProductRepository.AddNew(product);
+                    ProductRepository.Add(product);
                     MessageBox.Show("Insert successfully");
                 }
             }

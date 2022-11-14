@@ -1,4 +1,4 @@
-﻿using BussinessObject;
+﻿using DataAccess.Models;
 using DataAccess.Repository;
 using System;
 using System.Collections.Generic;
@@ -14,7 +14,7 @@ namespace SalesWinApp
 {
     public partial class frmMain : Form
     {
-        public MemberObject LoginUser { get; set; }
+        public Member LoginUser { get; set; }
         IMemberRepository memberRepository = new MemberRepository();
         public bool AdminOrUser;//Admin: true || User:false
         public frmMain()

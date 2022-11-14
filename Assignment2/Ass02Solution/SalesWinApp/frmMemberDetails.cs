@@ -1,4 +1,4 @@
-﻿using BussinessObject;
+﻿using DataAccess.Models;
 using DataAccess.Repository;
 using System;
 using System.Collections.Generic;
@@ -20,7 +20,7 @@ namespace SalesWinApp
         }
         public IMemberRepository MemberRepository { get; set; }
         public string Section { get; set; }
-        public MemberObject MemberInfo { get; set; }
+        public Member MemberInfo { get; set; }
         private void frmMemberDetails_Load(object sender, EventArgs e)
         {
             if (Section.Contains("Update"))
@@ -39,7 +39,7 @@ namespace SalesWinApp
         {
             try
             {
-                var member = new MemberObject
+                var member = new Member
                 {
                     Email = txtEmail.Text,
                     CompanyName = txtCompanyName.Text,
@@ -60,7 +60,7 @@ namespace SalesWinApp
                 }
                 else
                 {
-                    MemberRepository.AddNew(member);
+                    MemberRepository.Add(member);
                     MessageBox.Show("Insert successfully");
                 }
             }
