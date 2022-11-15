@@ -29,6 +29,7 @@ namespace SalesWinApp
         private void frmOrders_Load(object sender, EventArgs e)
         {
             btnDelete.Enabled = false;
+            txtOrderId.Enabled = false;
             txtSearchMemberId.Text = string.Empty;
             txtSearchOrderId.Text = string.Empty;
             var ListOrders = orderRepository.Get();
@@ -136,10 +137,13 @@ namespace SalesWinApp
 
         private void btnNew_Click(object sender, EventArgs e)
         {
+            var orderNew = GetOrderObject();
+            orderNew.OrderId = 0;
+            orderRepository.Add(orderNew);
             frmOrderDetails frmOrderDetails = new frmOrderDetails
             {
                 Text = "Add new Details to Order",
-                //OrderInfo = GetOrderObject()
+                Order = orderNew
             };
             if (frmOrderDetails.ShowDialog() == DialogResult.OK)
             {
