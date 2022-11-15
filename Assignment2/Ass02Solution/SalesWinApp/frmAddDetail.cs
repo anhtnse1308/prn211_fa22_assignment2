@@ -81,6 +81,7 @@ namespace SalesWinApp
                 if (product.UnitPrice > 0 && product.UnitPrice > quantity)
                 {
                     product.UnitInStock -= quantity;
+                    productRepository.Update(product);
                     rs = true;
                 }
                 else
