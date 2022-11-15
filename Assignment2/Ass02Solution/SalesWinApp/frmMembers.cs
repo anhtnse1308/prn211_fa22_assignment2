@@ -21,7 +21,6 @@ namespace SalesWinApp
         private void frmMembersManagement_Load(object sender, EventArgs e)
         {
             btnDelete.Enabled = false;
-            txtSearchID.Text = string.Empty;
             txtSearchEmail.Text = string.Empty;
         }
 
@@ -92,7 +91,6 @@ namespace SalesWinApp
             txtCompanyName.DataBindings.Clear();
             txtPassword.DataBindings.Clear();
             txtCity.DataBindings.Clear();
-            txtSearchID.DataBindings.Clear();
             txtSearchEmail.DataBindings.Clear();
             txtCountry.DataBindings.Clear();
         }
@@ -162,11 +160,11 @@ namespace SalesWinApp
         {
             var ListMembers = memberRepository.Get();
             List<Member> searchList = new List<Member>();
-            if (!txtSearchID.Text.Equals(string.Empty) && !txtSearchEmail.Text.Equals(string.Empty))
+            if (!txtSearchEmail.Text.Equals(string.Empty))
             {
                 foreach (Member o in ListMembers)
                 {
-                    if (o.MemberId == int.Parse(txtSearchID.Text) && o.Email.Equals(txtSearchEmail.Text))
+                    if (o.Email.Equals(txtSearchEmail.Text))
                     {
                         searchList.Add(o);
                     }
@@ -178,7 +176,7 @@ namespace SalesWinApp
                 else
                 {
                     LoadMemberList(ListMembers);
-                    MessageBox.Show("No results found mathches ID and Name");
+                    MessageBox.Show("No results found mathches Name");
                 }
             }
         }

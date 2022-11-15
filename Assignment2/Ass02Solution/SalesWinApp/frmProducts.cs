@@ -14,7 +14,7 @@ namespace SalesWinApp
 {
     public partial class frmProducts : Form
     {
-        public Order OrderInfo { get; set; }
+        //public Order OrderInfo { get; set; }
 
         public frmProducts()
         {

@@ -83,7 +83,7 @@ namespace SalesWinApp
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(245, 463);
+            this.btnClose.Location = new System.Drawing.Point(352, 457);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(94, 29);
             this.btnClose.TabIndex = 24;
@@ -116,7 +116,6 @@ namespace SalesWinApp
             // 
             this.txtProductName.Location = new System.Drawing.Point(106, 86);
             this.txtProductName.Name = "txtProductName";
-            this.txtProductName.PasswordChar = '*';
             this.txtProductName.Size = new System.Drawing.Size(125, 27);
             this.txtProductName.TabIndex = 21;
             // 
@@ -133,7 +132,6 @@ namespace SalesWinApp
             // 
             this.txtCategoryId.Location = new System.Drawing.Point(106, 131);
             this.txtCategoryId.Name = "txtCategoryId";
-            this.txtCategoryId.PasswordChar = '*';
             this.txtCategoryId.Size = new System.Drawing.Size(125, 27);
             this.txtCategoryId.TabIndex = 19;
             // 
@@ -219,7 +217,7 @@ namespace SalesWinApp
             this.dgvProductList.RowHeadersWidth = 51;
             this.dgvProductList.RowTemplate.Height = 29;
             this.dgvProductList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProductList.Size = new System.Drawing.Size(568, 188);
+            this.dgvProductList.Size = new System.Drawing.Size(772, 188);
             this.dgvProductList.TabIndex = 21;
             this.dgvProductList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductList_CellDoubleClick);
             // 
@@ -227,7 +225,7 @@ namespace SalesWinApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(590, 498);
+            this.ClientSize = new System.Drawing.Size(791, 498);
             this.Controls.Add(this.btnLoad);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnNew);

@@ -130,7 +130,6 @@ namespace SalesWinApp
             // 
             this.txtMemberId.Location = new System.Drawing.Point(80, 86);
             this.txtMemberId.Name = "txtMemberId";
-            this.txtMemberId.PasswordChar = '*';
             this.txtMemberId.Size = new System.Drawing.Size(125, 27);
             this.txtMemberId.TabIndex = 21;
             // 
@@ -147,7 +146,6 @@ namespace SalesWinApp
             // 
             this.txtFreight.Location = new System.Drawing.Point(80, 131);
             this.txtFreight.Name = "txtFreight";
-            this.txtFreight.PasswordChar = '*';
             this.txtFreight.Size = new System.Drawing.Size(125, 27);
             this.txtFreight.TabIndex = 19;
             // 

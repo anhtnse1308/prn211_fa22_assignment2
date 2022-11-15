@@ -15,9 +15,10 @@ namespace SalesWinApp
     public partial class frmOrderDetails : Form
     {
         public Member loginUser { get; set; }
+        public Order Order { get; set; }
         public IOrderDetailsRepository orderDetailsRepository = new OrderDetailsRepository();
         public IProductRepository productRepository = new ProductRepository();
-        public IOrderRepository orderRepository { get; set; }
+        public IOrderRepository orderRepository = new OrderRepository();
         BindingSource source;
         public frmOrderDetails()
         {
@@ -37,8 +38,6 @@ namespace SalesWinApp
             txtProductId.DataBindings.Clear();
             txtQuantity.DataBindings.Clear();
             txtUnitPrice.DataBindings.Clear();
-            txtSearchOrderId.DataBindings.Clear();
-            txtSearchProductId.DataBindings.Clear();
         }
         public OrderDetail GetOrderDetailsObject()
         {
@@ -47,11 +46,11 @@ namespace SalesWinApp
             {
                 orderDetails = new OrderDetail
                 {
-                    OrderId= int.Parse(txtOrderId.Text),
+                    OrderId = int.Parse(txtOrderId.Text),
                     ProductId = int.Parse(txtProductId.Text),
-                    UnitPrice =int.Parse(txtUnitPrice.Text),
+                    UnitPrice = decimal.Parse(txtUnitPrice.Text),
                     Quantity = int.Parse(txtQuantity.Text),
-                    Discount = float.Parse(txtDiscount.Text)
+                    Discount = double.Parse(txtDiscount.Text)
                 };
             }
             catch (Exception ex)
@@ -70,8 +69,8 @@ namespace SalesWinApp
 
                 ClearBindingData();
 
-                txtOrderId.DataBindings.Add("Text", source, "Order");
-                txtProductId.DataBindings.Add("Text", source, "Product");
+                txtOrderId.DataBindings.Add("Text", source, "OrderId");
+                txtProductId.DataBindings.Add("Text", source, "ProductId");
                 txtUnitPrice.DataBindings.Add("Text", source, "UnitPrice");
                 txtQuantity.DataBindings.Add("Text", source, "Quantity");
                 txtDiscount.DataBindings.Add("Text", source, "Discount");
@@ -95,13 +94,29 @@ namespace SalesWinApp
         public IEnumerable<OrderDetail> GetList()
         {
             List<OrderDetail> ListOrderDetails = new List<OrderDetail>();
-            var ListOrder = orderRepository.Get().Where(o => o.MemberId == loginUser.MemberId);
-            foreach (Order o in ListOrder)
+            List<Order> ListOrder = null;
+            if(Order != null)
             {
-                List<OrderDetail> order = (List<OrderDetail>)orderDetailsRepository.Get().Where(d => d.OrderId == o.OrderId);
-                foreach (OrderDetail details in order)
+                ListOrder.Add(Order);
+            }
+            else
+            {
+                if (loginUser != null && loginUser.Email.Equals("admin@fstore.com"))
                 {
-                    ListOrderDetails.Add(details);
+                    ListOrder = orderRepository.Get().ToList();
+                }
+                else
+                {
+                    ListOrder = orderRepository.Get().Where(o => o.MemberId == loginUser.MemberId)
+                        .ToList();
+                }
+            }
+            foreach (Order order in ListOrder)
+            {
+                var details = orderDetailsRepository.Get().Where(d => d.OrderId == order.OrderId);
+                foreach (OrderDetail detail in details)
+                {
+                    ListOrderDetails.Add(detail);
                 }
             }
             return ListOrderDetails;
@@ -110,11 +125,6 @@ namespace SalesWinApp
         {
             var ListOrderDetails = GetList();
             LoadOrderDetailsList(ListOrderDetails);
-        }
-
-        private void btnNew_Click(object sender, EventArgs e)
-        {
-            frmProducts frmProducts = new frmProducts { };
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -127,62 +137,51 @@ namespace SalesWinApp
             LoadOrderDetailsList(ListOrderDetails);
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            var ListOrderDetails = GetList();
-            List<OrderDetail> searchList = new List<OrderDetail>();
-            if (!txtSearchOrderId.Text.Equals(string.Empty) && !txtSearchProductId.Text.Equals(string.Empty))
-            {
-                foreach (OrderDetail o in ListOrderDetails)
-                {
-                    if (o.OrderId == int.Parse(txtSearchOrderId.Text) && o.Product.Equals(txtSearchProductId.Text))
-                    {
-                        searchList.Add(o);
-                    }
-                }
-                if (searchList.Count() != 0)
-                {
-                    LoadOrderDetailsList(searchList);
-                }
-                else
-                {
-                    LoadOrderDetailsList(ListOrderDetails);
-                    MessageBox.Show("No results found mathches OrderID and ProductId");
-                }
-            }
-
-        }
-
         private void btnClose_Click(object sender, EventArgs e) => Close();
-
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
-            if (!loginUser.CompanyName.Equals("Admin"))
-            {
-                MessageBox.Show("Can't edit");
-            }
-            else
-            {
-                var orderDetails = GetOrderDetailsObject();
-                orderDetailsRepository.Update(orderDetails);
-                var ListOrderDetails = GetList();
-                LoadOrderDetailsList(ListOrderDetails);
-            }
-        }
-
         private void frmOrderDetails_Load(object sender, EventArgs e)
         {
             if (!loginUser.CompanyName.Equals("Admin"))
             {
-                btnUpdate.Hide();
                 btnDelete.Hide();
-                dgvOrderList.ReadOnly = true;
+                btnAdd.Hide();
             }
             else
             {
-                btnUpdate.Show();
+                btnAdd.Show();
                 btnDelete.Show();
-                dgvOrderList.ReadOnly = false;
+            }
+            var ListOrderDetails = GetList();
+            LoadOrderDetailsList(ListOrderDetails);
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            var detail = GetOrderDetailsObject();
+            frmAddDetail frmAddDetail = new frmAddDetail()
+            {
+                Text = "Add new detail",
+                InsertOrUpdate = true,
+                Order = orderRepository.Get()
+                                    .Where(o => o.OrderId == detail.OrderId)
+                                    .FirstOrDefault(),
+            };
+            if (frmAddDetail.ShowDialog() == DialogResult.OK)
+            {
+                LoadOrderDetailsList(GetList());
+            }
+        }
+
+        private void dgvOrderList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            frmAddDetail frmAddDetail = new frmAddDetail
+            {
+                Text = "Update detail",
+                InsertOrUpdate = false,
+                Detail = GetOrderDetailsObject()
+            };
+            if(frmAddDetail.ShowDialog() == DialogResult.OK)
+            {
+                LoadOrderDetailsList(GetList());
             }
         }
     }

@@ -30,13 +30,8 @@ namespace SalesWinApp
         private void InitializeComponent()
         {
             this.btnLoad = new System.Windows.Forms.Button();
-            this.btnSearch = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
-            this.gbSearch = new System.Windows.Forms.GroupBox();
-            this.txtSearchProductId = new System.Windows.Forms.TextBox();
-            this.lb2 = new System.Windows.Forms.Label();
-            this.txtSearchOrderId = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.gbInfo = new System.Windows.Forms.GroupBox();
             this.txtDiscount = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -50,15 +45,13 @@ namespace SalesWinApp
             this.lbOrderId = new System.Windows.Forms.Label();
             this.dgvOrderList = new System.Windows.Forms.DataGridView();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.gbSearch.SuspendLayout();
             this.gbInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrderList)).BeginInit();
             this.SuspendLayout();
             // 
             // btnLoad
             // 
-            this.btnLoad.Location = new System.Drawing.Point(14, 241);
+            this.btnLoad.Location = new System.Drawing.Point(64, 179);
             this.btnLoad.Name = "btnLoad";
             this.btnLoad.Size = new System.Drawing.Size(94, 29);
             this.btnLoad.TabIndex = 28;
@@ -66,70 +59,25 @@ namespace SalesWinApp
             this.btnLoad.UseVisualStyleBackColor = true;
             this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
-            // btnSearch
+            // btnAdd
             // 
-            this.btnSearch.Location = new System.Drawing.Point(596, 241);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(94, 29);
-            this.btnSearch.TabIndex = 27;
-            this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            this.btnAdd.Location = new System.Drawing.Point(360, 179);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(94, 29);
+            this.btnAdd.TabIndex = 27;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(360, 531);
+            this.btnClose.Location = new System.Drawing.Point(360, 431);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(94, 29);
             this.btnClose.TabIndex = 24;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // gbSearch
-            // 
-            this.gbSearch.Controls.Add(this.txtSearchProductId);
-            this.gbSearch.Controls.Add(this.lb2);
-            this.gbSearch.Controls.Add(this.txtSearchOrderId);
-            this.gbSearch.Controls.Add(this.label5);
-            this.gbSearch.Location = new System.Drawing.Point(497, 10);
-            this.gbSearch.Name = "gbSearch";
-            this.gbSearch.Size = new System.Drawing.Size(271, 182);
-            this.gbSearch.TabIndex = 23;
-            this.gbSearch.TabStop = false;
-            this.gbSearch.Text = "Search";
-            // 
-            // txtSearchProductId
-            // 
-            this.txtSearchProductId.Location = new System.Drawing.Point(117, 113);
-            this.txtSearchProductId.Name = "txtSearchProductId";
-            this.txtSearchProductId.Size = new System.Drawing.Size(125, 27);
-            this.txtSearchProductId.TabIndex = 12;
-            // 
-            // lb2
-            // 
-            this.lb2.AutoSize = true;
-            this.lb2.Location = new System.Drawing.Point(7, 116);
-            this.lb2.Name = "lb2";
-            this.lb2.Size = new System.Drawing.Size(77, 20);
-            this.lb2.TabIndex = 11;
-            this.lb2.Text = "Product Id";
-            // 
-            // txtSearchOrderId
-            // 
-            this.txtSearchOrderId.Location = new System.Drawing.Point(117, 36);
-            this.txtSearchOrderId.Name = "txtSearchOrderId";
-            this.txtSearchOrderId.Size = new System.Drawing.Size(125, 27);
-            this.txtSearchOrderId.TabIndex = 10;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(7, 43);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(64, 20);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Order Id";
             // 
             // gbInfo
             // 
@@ -145,7 +93,7 @@ namespace SalesWinApp
             this.gbInfo.Controls.Add(this.lbOrderId);
             this.gbInfo.Location = new System.Drawing.Point(13, 10);
             this.gbInfo.Name = "gbInfo";
-            this.gbInfo.Size = new System.Drawing.Size(478, 182);
+            this.gbInfo.Size = new System.Drawing.Size(777, 144);
             this.gbInfo.TabIndex = 22;
             this.gbInfo.TabStop = false;
             this.gbInfo.Text = "Info";
@@ -170,7 +118,6 @@ namespace SalesWinApp
             // 
             this.txtProductId.Location = new System.Drawing.Point(80, 86);
             this.txtProductId.Name = "txtProductId";
-            this.txtProductId.PasswordChar = '*';
             this.txtProductId.Size = new System.Drawing.Size(125, 27);
             this.txtProductId.TabIndex = 21;
             // 
@@ -185,16 +132,15 @@ namespace SalesWinApp
             // 
             // txtQuantity
             // 
-            this.txtQuantity.Location = new System.Drawing.Point(80, 131);
+            this.txtQuantity.Location = new System.Drawing.Point(583, 40);
             this.txtQuantity.Name = "txtQuantity";
-            this.txtQuantity.PasswordChar = '*';
             this.txtQuantity.Size = new System.Drawing.Size(125, 27);
             this.txtQuantity.TabIndex = 19;
             // 
             // lbFreight
             // 
             this.lbFreight.AutoSize = true;
-            this.lbFreight.Location = new System.Drawing.Point(4, 134);
+            this.lbFreight.Location = new System.Drawing.Point(507, 43);
             this.lbFreight.Name = "lbFreight";
             this.lbFreight.Size = new System.Drawing.Size(65, 20);
             this.lbFreight.TabIndex = 18;
@@ -235,18 +181,19 @@ namespace SalesWinApp
             // dgvOrderList
             // 
             this.dgvOrderList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvOrderList.Location = new System.Drawing.Point(14, 317);
+            this.dgvOrderList.Location = new System.Drawing.Point(19, 237);
             this.dgvOrderList.Name = "dgvOrderList";
-            this.dgvOrderList.ReadOnly = true;
             this.dgvOrderList.RowHeadersWidth = 51;
             this.dgvOrderList.RowTemplate.Height = 29;
             this.dgvOrderList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvOrderList.Size = new System.Drawing.Size(776, 188);
             this.dgvOrderList.TabIndex = 21;
+            this.dgvOrderList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOrderList_CellContentClick);
+            this.dgvOrderList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOrderList_CellContentClick);
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(202, 241);
+            this.btnDelete.Location = new System.Drawing.Point(612, 179);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(94, 29);
             this.btnDelete.TabIndex = 29;
@@ -254,27 +201,15 @@ namespace SalesWinApp
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // btnUpdate
-            // 
-            this.btnUpdate.Location = new System.Drawing.Point(382, 241);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(94, 29);
-            this.btnUpdate.TabIndex = 30;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
             // frmOrderDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(802, 572);
-            this.Controls.Add(this.btnUpdate);
+            this.ClientSize = new System.Drawing.Size(802, 472);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnLoad);
-            this.Controls.Add(this.btnSearch);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.gbSearch);
             this.Controls.Add(this.gbInfo);
             this.Controls.Add(this.dgvOrderList);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -282,8 +217,6 @@ namespace SalesWinApp
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Order Details";
             this.Load += new System.EventHandler(this.frmOrderDetails_Load);
-            this.gbSearch.ResumeLayout(false);
-            this.gbSearch.PerformLayout();
             this.gbInfo.ResumeLayout(false);
             this.gbInfo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrderList)).EndInit();
@@ -294,13 +227,8 @@ namespace SalesWinApp
         #endregion
 
         private System.Windows.Forms.Button btnLoad;
-        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.GroupBox gbSearch;
-        private System.Windows.Forms.TextBox txtSearchProductId;
-        private System.Windows.Forms.Label lb2;
-        private System.Windows.Forms.TextBox txtSearchOrderId;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox gbInfo;
         private System.Windows.Forms.TextBox txtProductId;
         private System.Windows.Forms.Label lbMemberId;
@@ -314,6 +242,5 @@ namespace SalesWinApp
         private System.Windows.Forms.TextBox txtDiscount;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Button btnUpdate;
     }
 }

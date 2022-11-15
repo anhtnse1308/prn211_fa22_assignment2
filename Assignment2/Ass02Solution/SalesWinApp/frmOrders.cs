@@ -21,6 +21,7 @@ namespace SalesWinApp
         }
         public Member loginUser { get; set; }
         IOrderRepository orderRepository = new OrderRepository();
+        IMemberRepository memberRepository = new MemberRepository();
         BindingSource source;
 
         private void btnClose_Click(object sender, EventArgs e) => Close();
@@ -30,6 +31,8 @@ namespace SalesWinApp
             btnDelete.Enabled = false;
             txtSearchMemberId.Text = string.Empty;
             txtSearchOrderId.Text = string.Empty;
+            var ListOrders = orderRepository.Get();
+            LoadOrderList(ListOrders);
         }
 
         private void dgvOrderList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -37,7 +40,8 @@ namespace SalesWinApp
             frmOrderDetails frmOrderDetails = new frmOrderDetails
             {
                 loginUser = loginUser,
-                orderRepository = orderRepository
+                orderRepository = orderRepository,
+                Order = GetOrderObject()
             };
             if (frmOrderDetails.ShowDialog() == DialogResult.OK)
             {
@@ -57,7 +61,7 @@ namespace SalesWinApp
                 ClearBindingData();
 
                 txtOrderId.DataBindings.Add("Text", source, "OrderId");
-                txtMemberId.DataBindings.Add("Text", source, "Member.MemberId");
+                txtMemberId.DataBindings.Add("Text", source, "MemberId");
                 txtOrderDate.DataBindings.Add("Text", source, "OrderDate");
                 txtRequiredDate.DataBindings.Add("Text", source, "RequiredDate");
                 txtShippedDate.DataBindings.Add("Text", source, "ShippedDate");
@@ -132,12 +136,12 @@ namespace SalesWinApp
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            frmProducts frmProducts = new frmProducts
+            frmOrderDetails frmOrderDetails = new frmOrderDetails
             {
-                Text = "Add new Product to Order",
-                OrderInfo = GetOrderObject()
+                Text = "Add new Details to Order",
+                //OrderInfo = GetOrderObject()
             };
-            if (frmProducts.ShowDialog() == DialogResult.OK)
+            if (frmOrderDetails.ShowDialog() == DialogResult.OK)
             {
                 var ListOrder = orderRepository.Get();
                 LoadOrderList(ListOrder);

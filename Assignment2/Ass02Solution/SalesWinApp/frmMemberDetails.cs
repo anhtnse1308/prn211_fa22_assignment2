@@ -18,7 +18,7 @@ namespace SalesWinApp
         {
             InitializeComponent();
         }
-        public IMemberRepository MemberRepository { get; set; }
+        public IMemberRepository MemberRepository = new MemberRepository();
         public string Section { get; set; }
         public Member MemberInfo { get; set; }
         private void frmMemberDetails_Load(object sender, EventArgs e)
@@ -41,6 +41,7 @@ namespace SalesWinApp
             {
                 var member = new Member
                 {
+                    MemberId = MemberInfo.MemberId,
                     Email = txtEmail.Text,
                     CompanyName = txtCompanyName.Text,
                     Password = txtPassword.Text,

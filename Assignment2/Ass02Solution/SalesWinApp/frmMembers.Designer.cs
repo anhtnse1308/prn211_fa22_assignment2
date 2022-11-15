@@ -32,11 +32,11 @@ namespace SalesWinApp
         private void InitializeComponent()
         {
             this.dgvMemberList = new System.Windows.Forms.DataGridView();
-            this.txtSearchID = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.txtSearchEmail = new System.Windows.Forms.TextBox();
             this.lbSearchEmail = new System.Windows.Forms.Label();
             this.gbInfo = new System.Windows.Forms.GroupBox();
+            this.txtCountry = new System.Windows.Forms.TextBox();
+            this.lbCountry = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtCity = new System.Windows.Forms.TextBox();
             this.txtCompanyName = new System.Windows.Forms.TextBox();
@@ -52,8 +52,6 @@ namespace SalesWinApp
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnLoad = new System.Windows.Forms.Button();
             this.txtID = new System.Windows.Forms.TextBox();
-            this.lbCountry = new System.Windows.Forms.Label();
-            this.txtCountry = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMemberList)).BeginInit();
             this.gbInfo.SuspendLayout();
             this.gbSearch.SuspendLayout();
@@ -72,25 +70,9 @@ namespace SalesWinApp
             this.dgvMemberList.TabIndex = 8;
             this.dgvMemberList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMemberList_CellDoubleClick);
             // 
-            // txtSearchID
-            // 
-            this.txtSearchID.Location = new System.Drawing.Point(99, 40);
-            this.txtSearchID.Name = "txtSearchID";
-            this.txtSearchID.Size = new System.Drawing.Size(125, 27);
-            this.txtSearchID.TabIndex = 10;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(25, 43);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(24, 20);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "ID";
-            // 
             // txtSearchEmail
             // 
-            this.txtSearchEmail.Location = new System.Drawing.Point(99, 118);
+            this.txtSearchEmail.Location = new System.Drawing.Point(99, 40);
             this.txtSearchEmail.Name = "txtSearchEmail";
             this.txtSearchEmail.Size = new System.Drawing.Size(125, 27);
             this.txtSearchEmail.TabIndex = 12;
@@ -99,7 +81,7 @@ namespace SalesWinApp
             // lbSearchEmail
             // 
             this.lbSearchEmail.AutoSize = true;
-            this.lbSearchEmail.Location = new System.Drawing.Point(25, 121);
+            this.lbSearchEmail.Location = new System.Drawing.Point(25, 43);
             this.lbSearchEmail.Name = "lbSearchEmail";
             this.lbSearchEmail.Size = new System.Drawing.Size(46, 20);
             this.lbSearchEmail.TabIndex = 11;
@@ -123,6 +105,22 @@ namespace SalesWinApp
             this.gbInfo.TabIndex = 13;
             this.gbInfo.TabStop = false;
             this.gbInfo.Text = "Info";
+            // 
+            // txtCountry
+            // 
+            this.txtCountry.Location = new System.Drawing.Point(347, 131);
+            this.txtCountry.Name = "txtCountry";
+            this.txtCountry.Size = new System.Drawing.Size(125, 27);
+            this.txtCountry.TabIndex = 17;
+            // 
+            // lbCountry
+            // 
+            this.lbCountry.AutoSize = true;
+            this.lbCountry.Location = new System.Drawing.Point(225, 134);
+            this.lbCountry.Name = "lbCountry";
+            this.lbCountry.Size = new System.Drawing.Size(60, 20);
+            this.lbCountry.TabIndex = 16;
+            this.lbCountry.Text = "Country";
             // 
             // txtPassword
             // 
@@ -193,11 +191,9 @@ namespace SalesWinApp
             // 
             this.gbSearch.Controls.Add(this.txtSearchEmail);
             this.gbSearch.Controls.Add(this.lbSearchEmail);
-            this.gbSearch.Controls.Add(this.txtSearchID);
-            this.gbSearch.Controls.Add(this.label5);
             this.gbSearch.Location = new System.Drawing.Point(497, 13);
             this.gbSearch.Name = "gbSearch";
-            this.gbSearch.Size = new System.Drawing.Size(271, 182);
+            this.gbSearch.Size = new System.Drawing.Size(271, 109);
             this.gbSearch.TabIndex = 14;
             this.gbSearch.TabStop = false;
             this.gbSearch.Text = "Search";
@@ -214,7 +210,7 @@ namespace SalesWinApp
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(201, 215);
+            this.btnNew.Location = new System.Drawing.Point(339, 215);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(94, 29);
             this.btnNew.TabIndex = 16;
@@ -224,7 +220,7 @@ namespace SalesWinApp
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(374, 215);
+            this.btnDelete.Location = new System.Drawing.Point(596, 215);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(94, 29);
             this.btnDelete.TabIndex = 18;
@@ -234,7 +230,7 @@ namespace SalesWinApp
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(596, 215);
+            this.btnSearch.Location = new System.Drawing.Point(596, 147);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(94, 29);
             this.btnSearch.TabIndex = 19;
@@ -244,7 +240,7 @@ namespace SalesWinApp
             // 
             // btnLoad
             // 
-            this.btnLoad.Location = new System.Drawing.Point(17, 215);
+            this.btnLoad.Location = new System.Drawing.Point(93, 215);
             this.btnLoad.Name = "btnLoad";
             this.btnLoad.Size = new System.Drawing.Size(94, 29);
             this.btnLoad.TabIndex = 20;
@@ -258,22 +254,6 @@ namespace SalesWinApp
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(125, 27);
             this.txtID.TabIndex = 21;
-            // 
-            // lbCountry
-            // 
-            this.lbCountry.AutoSize = true;
-            this.lbCountry.Location = new System.Drawing.Point(225, 134);
-            this.lbCountry.Name = "lbCountry";
-            this.lbCountry.Size = new System.Drawing.Size(60, 20);
-            this.lbCountry.TabIndex = 16;
-            this.lbCountry.Text = "Country";
-            // 
-            // txtCountry
-            // 
-            this.txtCountry.Location = new System.Drawing.Point(347, 131);
-            this.txtCountry.Name = "txtCountry";
-            this.txtCountry.Size = new System.Drawing.Size(125, 27);
-            this.txtCountry.TabIndex = 17;
             // 
             // frmMembers
             // 
@@ -306,8 +286,6 @@ namespace SalesWinApp
         #endregion
 
         private System.Windows.Forms.DataGridView dgvMemberList;
-        private System.Windows.Forms.TextBox txtSearchID;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtSearchEmail;
         private System.Windows.Forms.Label lbSearchEmail;
         private System.Windows.Forms.GroupBox gbInfo;

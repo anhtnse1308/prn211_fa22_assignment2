@@ -48,7 +48,7 @@ namespace SalesWinApp
             // btnSave
             // 
             this.btnSave.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnSave.Location = new System.Drawing.Point(198, 317);
+            this.btnSave.Location = new System.Drawing.Point(219, 317);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(94, 29);
             this.btnSave.TabIndex = 0;
@@ -59,7 +59,7 @@ namespace SalesWinApp
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(325, 317);
+            this.btnCancel.Location = new System.Drawing.Point(340, 317);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(94, 29);
             this.btnCancel.TabIndex = 1;
@@ -168,7 +168,7 @@ namespace SalesWinApp
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(447, 369);
+            this.ClientSize = new System.Drawing.Size(456, 369);
             this.Controls.Add(this.txtCompanyName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtCountry);
