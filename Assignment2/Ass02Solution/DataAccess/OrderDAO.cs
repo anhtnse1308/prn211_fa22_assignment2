@@ -70,5 +70,20 @@ namespace DataAccess
                 }
             }
         }
+
+        public IEnumerable<Order> GetStatistics(DateTime orderDate, DateTime shippedDate)
+        {
+            var statistics = new List<Order>();
+            try
+            {
+                using MyStoreContext store = new MyStoreContext();
+                statistics = store.Orders.Where(o => o.OrderDate >= orderDate && o.ShippedDate <= shippedDate).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return statistics;
+        }
     }
 }

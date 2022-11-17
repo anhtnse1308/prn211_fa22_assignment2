@@ -16,5 +16,8 @@ namespace DataAccess.Repository
         public void Remove(Order entity) => OrderDAO.Instance.Remove(entity);
 
         public void Update(Order entity) => OrderDAO.Instance.Update(entity);
+
+        public IEnumerable<Order> GetStatistics(DateTime orderDate, DateTime shippedDate)
+      => OrderDAO.Instance.GetStatistics(orderDate, shippedDate);
     }
 }
