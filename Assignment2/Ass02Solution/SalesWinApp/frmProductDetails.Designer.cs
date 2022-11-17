@@ -125,7 +125,7 @@ namespace SalesWinApp
             this.btnSave.TabIndex = 23;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click_1);
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // txtCategoryId
             // 
