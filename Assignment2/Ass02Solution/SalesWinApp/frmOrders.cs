@@ -131,7 +131,8 @@ namespace SalesWinApp
                     OrderDate = DateTime.Parse(txtOrderDate.Text),
                     ShippedDate = DateTime.Parse(txtShippedDate.Text),
                     RequiredDate = DateTime.Parse(txtRequiredDate.Text),
-                    Freight = decimal.Parse(txtFreight.Text)
+                    Freight = decimal.Parse(txtFreight.Text),
+                    
                 };
             }
             catch (Exception ex)
@@ -223,6 +224,12 @@ namespace SalesWinApp
                     MessageBox.Show("No results found mathches OrderID and MemberId");
                 }
             }
+        }
+
+        private void btnStatistics_Click(object sender, EventArgs e)
+        {
+            frmReport frmReport = new frmReport();
+            frmReport.ShowDialog();
         }
     }
 }
