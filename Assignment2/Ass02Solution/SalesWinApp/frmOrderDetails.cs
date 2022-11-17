@@ -176,15 +176,22 @@ namespace SalesWinApp
 
         private void dgvOrderList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            frmAddDetail frmAddDetail = new frmAddDetail
+            if (loginUser.Email == DataAccess.Helper.JsonReader.GetAdmin().Email)
             {
-                Text = "Update detail",
-                InsertOrUpdate = false,
-                Detail = GetOrderDetailsObject()
-            };
-            if(frmAddDetail.ShowDialog() == DialogResult.OK)
+                frmAddDetail frmAddDetail = new frmAddDetail
+                {
+                    Text = "Update detail",
+                    InsertOrUpdate = false,
+                    Detail = GetOrderDetailsObject()
+                };
+                if (frmAddDetail.ShowDialog() == DialogResult.OK)
+                {
+                    LoadOrderDetailsList(GetList());
+                }
+            }
+            else
             {
-                LoadOrderDetailsList(GetList());
+                MessageBox.Show("You are not allowed to access this function!");
             }
         }
     }

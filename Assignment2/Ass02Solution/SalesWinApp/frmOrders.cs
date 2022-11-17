@@ -33,8 +33,19 @@ namespace SalesWinApp
             txtOrderId.Enabled = false;
             txtSearchMemberId.Text = string.Empty;
             txtSearchOrderId.Text = string.Empty;
-            var ListOrders = orderRepository.Get();
-            LoadOrderList(ListOrders);
+            if(loginUser != null && loginUser.Email != DataAccess.Helper.JsonReader.GetAdmin().Email)
+            {
+                btnNew.Hide();
+                btnDelete.Hide();
+                var ListOrders = orderRepository.Get()
+                    .Where(o => o.MemberId == loginUser.MemberId);
+                LoadOrderList(ListOrders);
+            }
+            else
+            {
+                var ListOrders = orderRepository.Get();
+                LoadOrderList(ListOrders);
+            }
         }
 
         private void dgvOrderList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

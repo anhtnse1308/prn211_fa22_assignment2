@@ -51,7 +51,6 @@ namespace SalesWinApp
             // 
             // btnLoad
             // 
-            this.btnLoad.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnLoad.Location = new System.Drawing.Point(64, 179);
             this.btnLoad.Name = "btnLoad";
             this.btnLoad.Size = new System.Drawing.Size(94, 29);
@@ -62,7 +61,6 @@ namespace SalesWinApp
             // 
             // btnAdd
             // 
-            this.btnAdd.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnAdd.Location = new System.Drawing.Point(360, 179);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(94, 29);
@@ -73,6 +71,7 @@ namespace SalesWinApp
             // 
             // btnClose
             // 
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnClose.Location = new System.Drawing.Point(360, 431);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(94, 29);

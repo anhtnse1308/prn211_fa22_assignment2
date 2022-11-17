@@ -26,7 +26,7 @@ namespace SalesWinApp
         {
             if (LoginUser != null)
             {
-                if (LoginUser.CompanyName.Equals("Admin"))
+                if (LoginUser.Email == DataAccess.Helper.JsonReader.GetAdmin().Email)
                 {
                     btnMember.Text = "Members Management";
                     btnOrder.Text = "Orders Management";
@@ -78,12 +78,12 @@ namespace SalesWinApp
             }
             else
             {
-                frmOrderDetails frmOrderDetails = new frmOrderDetails 
+                frmOrders frmOrders = new frmOrders 
                 {
                     Text = "Order History",
                     loginUser=LoginUser
                 };
-                frmOrderDetails.Show();
+                frmOrders.Show();
             }
         }
 

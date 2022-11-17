@@ -95,6 +95,7 @@
             this.btnCancel.TabIndex = 32;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // cboProductId
             // 
@@ -103,6 +104,7 @@
             this.cboProductId.Name = "cboProductId";
             this.cboProductId.Size = new System.Drawing.Size(255, 28);
             this.cboProductId.TabIndex = 33;
+            this.cboProductId.SelectedIndexChanged += new System.EventHandler(this.cboProductId_SelectedIndexChanged);
             // 
             // txtDiscount
             // 

@@ -99,5 +99,13 @@ namespace SalesWinApp
             }
             return rs;
         }
+
+        private void btnCancel_Click(object sender, EventArgs e) => this.Close();
+
+        private void cboProductId_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var product = cboProductId.SelectedItem as Product;
+            txtUnitPrice.Text = product.UnitPrice.ToString();
+        }
     }
 }
