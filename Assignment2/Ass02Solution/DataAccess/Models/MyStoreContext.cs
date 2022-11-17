@@ -77,7 +77,7 @@ public partial class MyStoreContext : DbContext
 
         modelBuilder.Entity<OrderDetail>(entity =>
         {
-            entity.HasKey(e => new { e.ProductId, e.OrderId }).HasName("PK__OrderDet__5835C37136FE9112");
+            entity.HasKey(e => new { e.ProductId, e.OrderId });
 
             entity.ToTable("OrderDetail");
 

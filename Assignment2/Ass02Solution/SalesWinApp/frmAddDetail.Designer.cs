@@ -107,10 +107,11 @@
             // txtDiscount
             // 
             this.txtDiscount.Location = new System.Drawing.Point(190, 187);
-            this.txtDiscount.Mask = "000.00";
+            this.txtDiscount.Mask = "000";
             this.txtDiscount.Name = "txtDiscount";
             this.txtDiscount.Size = new System.Drawing.Size(255, 27);
             this.txtDiscount.TabIndex = 34;
+            this.txtDiscount.ValidatingType = typeof(int);
             // 
             // txtQuantity
             // 

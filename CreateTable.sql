@@ -39,9 +39,9 @@ CREATE TABLE [Product](
 CREATE TABLE [OrderDetail](
 	[OrderId] [int] REFERENCES [Order]([OrderId])NOT NULL,
 	[ProductId] [int] REFERENCES Product([ProductId])NOT NULL,
-	[UnitPrice] [money] NOT NULL,
-	[Quantity] [int] NOT NULL,
-	[Discount] [float] 
+	[UnitPrice] [money],
+	[Quantity] [int],
+	[Discount] [float],
 	PRIMARY KEY([ProductId],[OrderId])
 ) 
 

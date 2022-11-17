@@ -37,13 +37,13 @@ namespace SalesWinApp
             this.txtSearchMemberId = new System.Windows.Forms.TextBox();
             this.lbSearchEmail = new System.Windows.Forms.Label();
             this.gbInfo = new System.Windows.Forms.GroupBox();
+            this.txtShippedDate = new System.Windows.Forms.DateTimePicker();
+            this.txtRequiredDate = new System.Windows.Forms.DateTimePicker();
             this.txtMemberId = new System.Windows.Forms.TextBox();
             this.lbMemberId = new System.Windows.Forms.Label();
             this.txtFreight = new System.Windows.Forms.TextBox();
             this.lbFreight = new System.Windows.Forms.Label();
-            this.txtShippedDate = new System.Windows.Forms.TextBox();
             this.lbShippedDate = new System.Windows.Forms.Label();
-            this.txtRequiredDate = new System.Windows.Forms.TextBox();
             this.txtOrderDate = new System.Windows.Forms.TextBox();
             this.txtOrderId = new System.Windows.Forms.TextBox();
             this.lbRequiredDate = new System.Windows.Forms.Label();
@@ -69,7 +69,7 @@ namespace SalesWinApp
             this.dgvOrderList.RowHeadersWidth = 51;
             this.dgvOrderList.RowTemplate.Height = 29;
             this.dgvOrderList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvOrderList.Size = new System.Drawing.Size(776, 188);
+            this.dgvOrderList.Size = new System.Drawing.Size(997, 188);
             this.dgvOrderList.TabIndex = 8;
             this.dgvOrderList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOrderList_CellDoubleClick);
             // 
@@ -107,13 +107,13 @@ namespace SalesWinApp
             // 
             // gbInfo
             // 
+            this.gbInfo.Controls.Add(this.txtShippedDate);
+            this.gbInfo.Controls.Add(this.txtRequiredDate);
             this.gbInfo.Controls.Add(this.txtMemberId);
             this.gbInfo.Controls.Add(this.lbMemberId);
             this.gbInfo.Controls.Add(this.txtFreight);
             this.gbInfo.Controls.Add(this.lbFreight);
-            this.gbInfo.Controls.Add(this.txtShippedDate);
             this.gbInfo.Controls.Add(this.lbShippedDate);
-            this.gbInfo.Controls.Add(this.txtRequiredDate);
             this.gbInfo.Controls.Add(this.txtOrderDate);
             this.gbInfo.Controls.Add(this.txtOrderId);
             this.gbInfo.Controls.Add(this.lbRequiredDate);
@@ -121,16 +121,30 @@ namespace SalesWinApp
             this.gbInfo.Controls.Add(this.lbOrderId);
             this.gbInfo.Location = new System.Drawing.Point(13, 13);
             this.gbInfo.Name = "gbInfo";
-            this.gbInfo.Size = new System.Drawing.Size(478, 182);
+            this.gbInfo.Size = new System.Drawing.Size(700, 182);
             this.gbInfo.TabIndex = 13;
             this.gbInfo.TabStop = false;
             this.gbInfo.Text = "Info";
+            // 
+            // txtShippedDate
+            // 
+            this.txtShippedDate.Location = new System.Drawing.Point(437, 126);
+            this.txtShippedDate.Name = "txtShippedDate";
+            this.txtShippedDate.Size = new System.Drawing.Size(250, 27);
+            this.txtShippedDate.TabIndex = 23;
+            // 
+            // txtRequiredDate
+            // 
+            this.txtRequiredDate.Location = new System.Drawing.Point(436, 81);
+            this.txtRequiredDate.Name = "txtRequiredDate";
+            this.txtRequiredDate.Size = new System.Drawing.Size(250, 27);
+            this.txtRequiredDate.TabIndex = 22;
             // 
             // txtMemberId
             // 
             this.txtMemberId.Location = new System.Drawing.Point(80, 86);
             this.txtMemberId.Name = "txtMemberId";
-            this.txtMemberId.Size = new System.Drawing.Size(125, 27);
+            this.txtMemberId.Size = new System.Drawing.Size(213, 27);
             this.txtMemberId.TabIndex = 21;
             // 
             // lbMemberId
@@ -146,7 +160,7 @@ namespace SalesWinApp
             // 
             this.txtFreight.Location = new System.Drawing.Point(80, 131);
             this.txtFreight.Name = "txtFreight";
-            this.txtFreight.Size = new System.Drawing.Size(125, 27);
+            this.txtFreight.Size = new System.Drawing.Size(213, 27);
             this.txtFreight.TabIndex = 19;
             // 
             // lbFreight
@@ -158,47 +172,33 @@ namespace SalesWinApp
             this.lbFreight.TabIndex = 18;
             this.lbFreight.Text = "Freight";
             // 
-            // txtShippedDate
-            // 
-            this.txtShippedDate.Location = new System.Drawing.Point(347, 131);
-            this.txtShippedDate.Name = "txtShippedDate";
-            this.txtShippedDate.Size = new System.Drawing.Size(125, 27);
-            this.txtShippedDate.TabIndex = 17;
-            // 
             // lbShippedDate
             // 
             this.lbShippedDate.AutoSize = true;
-            this.lbShippedDate.Location = new System.Drawing.Point(225, 134);
+            this.lbShippedDate.Location = new System.Drawing.Point(314, 131);
             this.lbShippedDate.Name = "lbShippedDate";
             this.lbShippedDate.Size = new System.Drawing.Size(100, 20);
             this.lbShippedDate.TabIndex = 16;
             this.lbShippedDate.Text = "Shipped Date";
             // 
-            // txtRequiredDate
-            // 
-            this.txtRequiredDate.Location = new System.Drawing.Point(347, 86);
-            this.txtRequiredDate.Name = "txtRequiredDate";
-            this.txtRequiredDate.Size = new System.Drawing.Size(125, 27);
-            this.txtRequiredDate.TabIndex = 14;
-            // 
             // txtOrderDate
             // 
-            this.txtOrderDate.Location = new System.Drawing.Point(347, 37);
+            this.txtOrderDate.Location = new System.Drawing.Point(436, 34);
             this.txtOrderDate.Name = "txtOrderDate";
-            this.txtOrderDate.Size = new System.Drawing.Size(125, 27);
+            this.txtOrderDate.Size = new System.Drawing.Size(241, 27);
             this.txtOrderDate.TabIndex = 13;
             // 
             // txtOrderId
             // 
             this.txtOrderId.Location = new System.Drawing.Point(80, 36);
             this.txtOrderId.Name = "txtOrderId";
-            this.txtOrderId.Size = new System.Drawing.Size(125, 27);
+            this.txtOrderId.Size = new System.Drawing.Size(213, 27);
             this.txtOrderId.TabIndex = 12;
             // 
             // lbRequiredDate
             // 
             this.lbRequiredDate.AutoSize = true;
-            this.lbRequiredDate.Location = new System.Drawing.Point(225, 89);
+            this.lbRequiredDate.Location = new System.Drawing.Point(314, 86);
             this.lbRequiredDate.Name = "lbRequiredDate";
             this.lbRequiredDate.Size = new System.Drawing.Size(105, 20);
             this.lbRequiredDate.TabIndex = 11;
@@ -207,7 +207,7 @@ namespace SalesWinApp
             // lbOrderDate
             // 
             this.lbOrderDate.AutoSize = true;
-            this.lbOrderDate.Location = new System.Drawing.Point(225, 43);
+            this.lbOrderDate.Location = new System.Drawing.Point(314, 40);
             this.lbOrderDate.Name = "lbOrderDate";
             this.lbOrderDate.Size = new System.Drawing.Size(83, 20);
             this.lbOrderDate.TabIndex = 10;
@@ -228,7 +228,7 @@ namespace SalesWinApp
             this.gbSearch.Controls.Add(this.lbSearchEmail);
             this.gbSearch.Controls.Add(this.txtSearchOrderId);
             this.gbSearch.Controls.Add(this.label5);
-            this.gbSearch.Location = new System.Drawing.Point(497, 13);
+            this.gbSearch.Location = new System.Drawing.Point(738, 12);
             this.gbSearch.Name = "gbSearch";
             this.gbSearch.Size = new System.Drawing.Size(271, 182);
             this.gbSearch.TabIndex = 14;
@@ -237,7 +237,7 @@ namespace SalesWinApp
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(361, 470);
+            this.btnClose.Location = new System.Drawing.Point(487, 470);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(94, 29);
             this.btnClose.TabIndex = 15;
@@ -247,7 +247,7 @@ namespace SalesWinApp
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(201, 215);
+            this.btnNew.Location = new System.Drawing.Point(316, 215);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(94, 29);
             this.btnNew.TabIndex = 16;
@@ -257,7 +257,7 @@ namespace SalesWinApp
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(374, 215);
+            this.btnDelete.Location = new System.Drawing.Point(586, 215);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(94, 29);
             this.btnDelete.TabIndex = 18;
@@ -267,7 +267,7 @@ namespace SalesWinApp
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(596, 215);
+            this.btnSearch.Location = new System.Drawing.Point(825, 215);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(94, 29);
             this.btnSearch.TabIndex = 19;
@@ -277,7 +277,7 @@ namespace SalesWinApp
             // 
             // btnLoad
             // 
-            this.btnLoad.Location = new System.Drawing.Point(17, 215);
+            this.btnLoad.Location = new System.Drawing.Point(53, 215);
             this.btnLoad.Name = "btnLoad";
             this.btnLoad.Size = new System.Drawing.Size(94, 29);
             this.btnLoad.TabIndex = 20;
@@ -289,7 +289,7 @@ namespace SalesWinApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 511);
+            this.ClientSize = new System.Drawing.Size(1021, 511);
             this.Controls.Add(this.btnLoad);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.btnDelete);
@@ -318,7 +318,6 @@ namespace SalesWinApp
         private System.Windows.Forms.TextBox txtSearchMemberId;
         private System.Windows.Forms.Label lbSearchEmail;
         private System.Windows.Forms.GroupBox gbInfo;
-        private System.Windows.Forms.TextBox txtRequiredDate;
         private System.Windows.Forms.TextBox txtOrderDate;
         private System.Windows.Forms.TextBox txtOrderId;
         private System.Windows.Forms.Label lbRequiredDate;
@@ -330,11 +329,12 @@ namespace SalesWinApp
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnLoad;
-        private TextBox txtShippedDate;
         private Label lbShippedDate;
         private TextBox txtMemberId;
         private Label lbMemberId;
         private TextBox txtFreight;
         private Label lbFreight;
+        private DateTimePicker txtShippedDate;
+        private DateTimePicker txtRequiredDate;
     }
 }

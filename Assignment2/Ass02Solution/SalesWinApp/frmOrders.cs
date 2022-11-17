@@ -21,7 +21,8 @@ namespace SalesWinApp
         }
         public Member loginUser { get; set; }
         IOrderRepository orderRepository = new OrderRepository();
-        IMemberRepository memberRepository = new MemberRepository();
+        IOrderDetailsRepository orderDetailsRepository = new OrderDetailsRepository();
+        //IMemberRepository memberRepository = new MemberRepository();
         BindingSource source;
 
         private void btnClose_Click(object sender, EventArgs e) => Close();
@@ -137,13 +138,24 @@ namespace SalesWinApp
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            var orderNew = GetOrderObject();
-            orderNew.OrderId = 0;
+            Order orderNew = null;
+
+            orderNew = new Order
+            {
+                OrderId = 0,
+                MemberId = int.Parse(txtMemberId.Text),
+                OrderDate = DateTime.Now,
+                ShippedDate = DateTime.Parse(txtShippedDate.Text),
+                RequiredDate = DateTime.Parse(txtRequiredDate.Text),
+                Freight = decimal.Parse(txtFreight.Text)
+            };
+
             orderRepository.Add(orderNew);
             frmOrderDetails frmOrderDetails = new frmOrderDetails
             {
                 Text = "Add new Details to Order",
-                Order = orderNew
+                Order = orderNew,
+                loginUser = this.loginUser
             };
             if (frmOrderDetails.ShowDialog() == DialogResult.OK)
             {
@@ -160,6 +172,13 @@ namespace SalesWinApp
                 var order = GetOrderObject();
                 if (order != null)
                 {
+                    var details = orderDetailsRepository.Get()
+                        .Where(o => o.OrderId == order.OrderId)
+                        .ToList();
+                    foreach (var item in details)
+                    {
+                        orderDetailsRepository.Remove(item);
+                    }
                     orderRepository.Remove(order);
                     var OrderList = orderRepository.Get();
                     LoadOrderList(OrderList);

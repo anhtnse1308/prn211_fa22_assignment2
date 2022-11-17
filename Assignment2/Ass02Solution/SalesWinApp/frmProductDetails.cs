@@ -21,17 +21,6 @@ namespace SalesWinApp
         public IProductRepository ProductRepository { get; set; }
         public string Section { get; set; }
         public Product ProductInfo { get; set; }
-        private void frmMemberDetails_Load(object sender, EventArgs e)
-        {
-            if (Section.Contains("Update"))
-            {
-                txtCategoryId.Text = ProductInfo.CategoryId.ToString();
-                txtProductName.Text = ProductInfo.ProductName;
-                txtUnitInStock.Text = ProductInfo.UnitInStock.ToString();
-                txtUnitPrice.Text = ProductInfo.UnitPrice.ToString();
-                txtWeight.Text = ProductInfo.Weight;
-            }
-        }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -75,5 +64,17 @@ namespace SalesWinApp
         }
 
         private void btnCancel_Click(object sender, EventArgs e) => Close();
+
+        private void frmProductDetails_Load(object sender, EventArgs e)
+        {
+            if (Section.Contains("Update"))
+            {
+                txtCategoryId.Text = ProductInfo.CategoryId.ToString();
+                txtProductName.Text = ProductInfo.ProductName;
+                txtUnitInStock.Text = ProductInfo.UnitInStock.ToString();
+                txtUnitPrice.Text = ProductInfo.UnitPrice.ToString();
+                txtWeight.Text = ProductInfo.Weight;
+            }
+        }
     }
 }

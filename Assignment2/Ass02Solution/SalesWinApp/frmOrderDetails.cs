@@ -38,6 +38,7 @@ namespace SalesWinApp
             txtProductId.DataBindings.Clear();
             txtQuantity.DataBindings.Clear();
             txtUnitPrice.DataBindings.Clear();
+            txtDiscount.DataBindings.Clear();
         }
         public OrderDetail GetOrderDetailsObject()
         {
@@ -94,10 +95,14 @@ namespace SalesWinApp
         public IEnumerable<OrderDetail> GetList()
         {
             List<OrderDetail> ListOrderDetails = new List<OrderDetail>();
-            List<Order> ListOrder = null;
+            List<Order> ListOrder = new List<Order>();
             if(Order != null)
             {
-                ListOrder.Add(Order);
+                var details = orderDetailsRepository.Get().Where(d => d.OrderId == Order.OrderId);
+                foreach (OrderDetail detail in details)
+                {
+                    ListOrderDetails.Add(detail);
+                }
             }
             else
             {
@@ -110,13 +115,13 @@ namespace SalesWinApp
                     ListOrder = orderRepository.Get().Where(o => o.MemberId == loginUser.MemberId)
                         .ToList();
                 }
-            }
-            foreach (Order order in ListOrder)
-            {
-                var details = orderDetailsRepository.Get().Where(d => d.OrderId == order.OrderId);
-                foreach (OrderDetail detail in details)
+                foreach (Order order in ListOrder)
                 {
-                    ListOrderDetails.Add(detail);
+                    var details = orderDetailsRepository.Get().Where(d => d.OrderId == order.OrderId);
+                    foreach (OrderDetail detail in details)
+                    {
+                        ListOrderDetails.Add(detail);
+                    }
                 }
             }
             return ListOrderDetails;
@@ -156,18 +161,16 @@ namespace SalesWinApp
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            var detail = GetOrderDetailsObject();
             frmAddDetail frmAddDetail = new frmAddDetail()
             {
                 Text = "Add new detail",
                 InsertOrUpdate = true,
-                Order = orderRepository.Get()
-                                    .Where(o => o.OrderId == detail.OrderId)
-                                    .FirstOrDefault(),
+                Order = this.Order
             };
             if (frmAddDetail.ShowDialog() == DialogResult.OK)
             {
-                LoadOrderDetailsList(GetList());
+                var details = GetList();
+                LoadOrderDetailsList(details);
             }
         }
 

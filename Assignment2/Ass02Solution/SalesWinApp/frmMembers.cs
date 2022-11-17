@@ -22,6 +22,8 @@ namespace SalesWinApp
         {
             btnDelete.Enabled = false;
             txtSearchEmail.Text = string.Empty;
+            var ListMembers = memberRepository.Get();
+            LoadMemberList(ListMembers);
         }
 
         private void dgvMemberList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

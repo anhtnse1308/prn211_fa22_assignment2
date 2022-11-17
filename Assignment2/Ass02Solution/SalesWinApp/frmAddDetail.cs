@@ -26,12 +26,13 @@ namespace SalesWinApp
 
         private void frmAddDetail_Load(object sender, EventArgs e)
         {
+            ClearText();
             var listProduct = productRepository.Get();
             if (listProduct != null && listProduct.Count() > 0)
             {
                 cboProductId.DataSource = listProduct;
                 cboProductId.DisplayMember = "ProductName";
-                cboProductId.SelectedValue = "ProductId";
+                cboProductId.ValueMember = "ProductId";
             }
             if (!InsertOrUpdate)
             {
@@ -45,12 +46,19 @@ namespace SalesWinApp
             }
         }
 
+        private void ClearText()
+        {
+            txtDiscount.Text = string.Empty;
+            txtQuantity.Text = string.Empty;
+            txtUnitPrice.Text = string.Empty;
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             var detail = new OrderDetail
             {
                 OrderId = Order.OrderId,
-                ProductId = (int)cboProductId.SelectedValue,
+                ProductId = int.Parse(cboProductId.SelectedValue.ToString()),
                 UnitPrice = decimal.Parse(txtUnitPrice.Text),
                 Quantity = int.Parse(txtQuantity.Text),
                 Discount = double.Parse(txtDiscount.Text),

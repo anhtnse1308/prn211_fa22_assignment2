@@ -52,6 +52,15 @@ namespace DataAccess
                 var found = _context.OrderDetails.Where(m => (m.ProductId == entity.ProductId) && (m.OrderId == entity.OrderId)).FirstOrDefault();
                 if (found != null)
                 {
+                    var product = _context.Products
+                        .Where(p => p.ProductId == found.ProductId)
+                        .FirstOrDefault();
+                    if (product != null)
+                    {
+                        product.UnitInStock += found.Quantity;
+                        _context.Entry(product).CurrentValues.SetValues(product);
+                        _context.SaveChanges();
+                    }
                     _context.OrderDetails.Remove(found);
                     _context.SaveChanges();
                 }

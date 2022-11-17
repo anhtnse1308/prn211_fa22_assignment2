@@ -29,6 +29,8 @@ namespace SalesWinApp
         private void frmProducts_Load(object sender, EventArgs e)
         {
             btnDelete.Enabled = false;
+            var ListProduct = productRepository.Get();
+            LoadMemberList(ListProduct);
         }
 
         private void dgvProductList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -110,7 +112,7 @@ namespace SalesWinApp
                 {
                     CategoryId = int.Parse(txtCategoryId.Text),
                     ProductName = txtProductName.Text,
-                    UnitPrice = int.Parse(txtUnitPrice.Text),
+                    UnitPrice = decimal.Parse(txtUnitPrice.Text),
                     ProductId = int.Parse(txtProductId.Text),
                     UnitInStock = int.Parse(txtUnitInStock.Text),
                     Weight = txtWeight.Text
