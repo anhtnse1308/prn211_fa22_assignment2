@@ -47,8 +47,12 @@ namespace SalesWinApp
                 };
                 if (Section.Equals("Update"))
                 {
-                    ProductRepository.Update(product);
-                    MessageBox.Show("Update successfully");
+                    if (ProductInfo != null)
+                    {
+                        product.ProductId = ProductInfo.ProductId;
+                        ProductRepository.Update(product);
+                        MessageBox.Show("Update successfully"); 
+                    }
                 }
                 else
                 {

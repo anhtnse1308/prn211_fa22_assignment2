@@ -46,68 +46,71 @@ namespace SalesWinApp
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(28, 76);
+            this.label2.Location = new System.Drawing.Point(24, 57);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(82, 20);
+            this.label2.Size = new System.Drawing.Size(65, 15);
             this.label2.TabIndex = 35;
             this.label2.Text = "CategoryId";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(27, 170);
+            this.label7.Location = new System.Drawing.Point(24, 128);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(72, 20);
+            this.label7.Size = new System.Drawing.Size(58, 15);
             this.label7.TabIndex = 33;
             this.label7.Text = "Unit Price";
             // 
             // txtWeight
             // 
-            this.txtWeight.Location = new System.Drawing.Point(160, 120);
+            this.txtWeight.Location = new System.Drawing.Point(140, 90);
+            this.txtWeight.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtWeight.Name = "txtWeight";
-            this.txtWeight.Size = new System.Drawing.Size(254, 27);
+            this.txtWeight.Size = new System.Drawing.Size(223, 23);
             this.txtWeight.TabIndex = 32;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(27, 123);
+            this.label6.Location = new System.Drawing.Point(24, 92);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(56, 20);
+            this.label6.Size = new System.Drawing.Size(45, 15);
             this.label6.TabIndex = 31;
             this.label6.Text = "Weight";
             // 
             // txtProductName
             // 
-            this.txtProductName.Location = new System.Drawing.Point(160, 25);
+            this.txtProductName.Location = new System.Drawing.Point(140, 19);
+            this.txtProductName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtProductName.Name = "txtProductName";
-            this.txtProductName.Size = new System.Drawing.Size(254, 27);
+            this.txtProductName.Size = new System.Drawing.Size(223, 23);
             this.txtProductName.TabIndex = 30;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(27, 219);
+            this.label4.Location = new System.Drawing.Point(24, 164);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(92, 20);
+            this.label4.Size = new System.Drawing.Size(74, 15);
             this.label4.TabIndex = 26;
             this.label4.Text = "Unit In Stock";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(27, 28);
+            this.label3.Location = new System.Drawing.Point(24, 21);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(100, 20);
+            this.label3.Size = new System.Drawing.Size(81, 15);
             this.label3.TabIndex = 25;
             this.label3.Text = "ProductName";
             // 
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(321, 269);
+            this.btnCancel.Location = new System.Drawing.Point(281, 202);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(94, 29);
+            this.btnCancel.Size = new System.Drawing.Size(82, 22);
             this.btnCancel.TabIndex = 24;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -115,45 +118,50 @@ namespace SalesWinApp
             // btnSave
             // 
             this.btnSave.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnSave.Location = new System.Drawing.Point(194, 269);
+            this.btnSave.Location = new System.Drawing.Point(170, 202);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(94, 29);
+            this.btnSave.Size = new System.Drawing.Size(82, 22);
             this.btnSave.TabIndex = 23;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click_1);
             // 
             // txtCategoryId
             // 
-            this.txtCategoryId.Location = new System.Drawing.Point(160, 73);
+            this.txtCategoryId.Location = new System.Drawing.Point(140, 55);
+            this.txtCategoryId.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCategoryId.Mask = "00000";
             this.txtCategoryId.Name = "txtCategoryId";
-            this.txtCategoryId.Size = new System.Drawing.Size(255, 27);
+            this.txtCategoryId.Size = new System.Drawing.Size(224, 23);
             this.txtCategoryId.TabIndex = 36;
             this.txtCategoryId.ValidatingType = typeof(int);
             // 
             // txtUnitPrice
             // 
-            this.txtUnitPrice.Location = new System.Drawing.Point(160, 167);
+            this.txtUnitPrice.Location = new System.Drawing.Point(140, 125);
+            this.txtUnitPrice.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtUnitPrice.Mask = "00000";
             this.txtUnitPrice.Name = "txtUnitPrice";
-            this.txtUnitPrice.Size = new System.Drawing.Size(255, 27);
+            this.txtUnitPrice.Size = new System.Drawing.Size(224, 23);
             this.txtUnitPrice.TabIndex = 37;
             this.txtUnitPrice.ValidatingType = typeof(int);
             // 
             // txtUnitInStock
             // 
-            this.txtUnitInStock.Location = new System.Drawing.Point(160, 216);
+            this.txtUnitInStock.Location = new System.Drawing.Point(140, 162);
+            this.txtUnitInStock.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtUnitInStock.Mask = "00000";
             this.txtUnitInStock.Name = "txtUnitInStock";
-            this.txtUnitInStock.Size = new System.Drawing.Size(255, 27);
+            this.txtUnitInStock.Size = new System.Drawing.Size(224, 23);
             this.txtUnitInStock.TabIndex = 38;
             this.txtUnitInStock.ValidatingType = typeof(int);
             // 
             // frmProductDetails
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(434, 314);
+            this.ClientSize = new System.Drawing.Size(380, 236);
             this.Controls.Add(this.txtUnitInStock);
             this.Controls.Add(this.txtUnitPrice);
             this.Controls.Add(this.txtCategoryId);
@@ -167,6 +175,7 @@ namespace SalesWinApp
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmProductDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmProductDetails";

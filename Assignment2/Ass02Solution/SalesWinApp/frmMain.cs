@@ -46,13 +46,17 @@ namespace SalesWinApp
         {
             if (AdminOrUser)
             {
-                frmMembers frmMembers = new frmMembers();
+                frmMembers frmMembers = new frmMembers()
+                {
+                    Text = "Member Management"
+                };
                 frmMembers.Show();
             }
             else
             {
                 frmMemberDetails frmMemberDetails = new frmMemberDetails
                 {
+                    Text = "Member Profile",
                     MemberInfo=LoginUser,
                     MemberRepository=memberRepository,
                     Section="Update"
@@ -67,6 +71,7 @@ namespace SalesWinApp
             {
                 frmOrders frmOrders = new frmOrders
                 {
+                    Text = "Order Management",
                     loginUser=LoginUser
                 };
                 frmOrders.Show();
@@ -74,10 +79,9 @@ namespace SalesWinApp
             else
             {
                 frmOrderDetails frmOrderDetails = new frmOrderDetails 
-                { 
-                    loginUser=LoginUser,
-                    orderDetailsRepository=new OrderDetailsRepository(),
-                    orderRepository= new OrderRepository()
+                {
+                    Text = "Order History",
+                    loginUser=LoginUser
                 };
                 frmOrderDetails.Show();
             }
