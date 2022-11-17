@@ -41,7 +41,6 @@ namespace SalesWinApp
             {
                 var member = new Member
                 {
-                    MemberId = MemberInfo.MemberId,
                     Email = txtEmail.Text,
                     CompanyName = txtCompanyName.Text,
                     Password = txtPassword.Text,
@@ -56,8 +55,12 @@ namespace SalesWinApp
                 }
                 else if (Section.Equals("Update"))
                 {
-                    MemberRepository.Update(member);
-                    MessageBox.Show("Update successfully");
+                    if (MemberInfo != null)
+                    {
+                        member.MemberId = MemberInfo.MemberId;
+                        MemberRepository.Update(member);
+                        MessageBox.Show("Update successfully"); 
+                    }
                 }
                 else
                 {
