@@ -11,7 +11,7 @@ namespace DataAccess.Repository
     {
         public void Add(Order entity) => OrderDAO.Instance.Add(entity);
 
-        public IEnumerable<Order> Get() => OrderDAO.Instance.GetMembers();
+        public IEnumerable<Order> Get() => OrderDAO.Instance.Get();
 
         public void Remove(Order entity) => OrderDAO.Instance.Remove(entity);
 

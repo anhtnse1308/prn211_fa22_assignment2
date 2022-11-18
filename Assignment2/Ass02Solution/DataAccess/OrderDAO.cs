@@ -31,7 +31,7 @@ namespace DataAccess
                 }
             }
         }
-        public IEnumerable<Order> GetMembers()
+        public IEnumerable<Order> Get()
         {
             return _context.Orders.ToList();
         }
